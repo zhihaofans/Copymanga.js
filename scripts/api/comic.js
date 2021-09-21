@@ -3,12 +3,13 @@ class ComicDetail {
   constructor(comicId) {
     this.COMIC_ID = comicId;
   }
-  getData() {
+  async getData() {
     const http = new httpLib(),
-      getResult = http.get(
+      getResult = await http.get(
         `https://api.copymanga.com/api/v3/comic2/${this.COMIC_ID}?platform=1`
       );
     $console.warn(getResult);
+    return getResult.error ? undefined : getResult.data;
   }
 }
 class Comic {
