@@ -1,0 +1,1 @@
+# Copymanga.js
