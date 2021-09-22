@@ -19,7 +19,7 @@ class ComicDetail {
           : undefined;
     return comicInfo;
   }
-  getChapterList() {
+  async getChapterList() {
     const http = new httpLib(),
       getResult = await http.get(
         `https://api.copymanga.com/api/v3/comic/${this.COMIC_ID}/group/default/chapters?offset=0`
