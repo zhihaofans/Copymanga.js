@@ -11,6 +11,22 @@ class ComicDetail {
     $console.warn(getResult);
     return getResult.error ? undefined : getResult.data;
   }
+  getComicInfo() {
+    const comicData = this.getData(),
+      comicInfo =
+        comicData != undefined && comicData.code == 200
+          ? comicData.result.comic
+          : undefined;
+    return comicInfo;
+  }
+  getChapterList() {
+    const http = new httpLib(),
+      getResult = await http.get(
+        `https://api.copymanga.com/api/v3/comic/${this.COMIC_ID}/group/default/chapters?offset=0`
+      );
+    $console.warn(getResult);
+    return getResult.error ? undefined : getResult.data;
+  }
 }
 class Comic {
   constructor(comicId) {
